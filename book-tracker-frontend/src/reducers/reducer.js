@@ -25,6 +25,11 @@ export default function reducer(state = [], action){
                     name: action.payload.name
                 }
             ];
+        case actions.SET_CURRENT_USER:
+            return{
+                id: action.payload.id,
+                name: action.payload.name
+            }
         default:
             return state;
     }

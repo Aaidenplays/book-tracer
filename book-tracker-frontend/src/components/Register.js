@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import {userAdded} from '../actions/actions'
+import {userAdded, setCurrentUser, currentUserSet} from '../actions/actions'
+import { Redirect } from 'react-router'
 // import * as actions from '../actions/actionTypes';
 import store from '../store'
 
@@ -30,8 +31,19 @@ export class Register extends Component {
     // store.subscribe(()=>{
     //   console.log("Store changed!", store.getstate());
     // })
+    console.log(store.getState()[store.getState().length-1])
+    this.setCurrentUser(store.getState()[store.getState().length-1])
   }
 
+  setCurrentUser = (user) => {
+    store.dispatch(currentUserSet(user));
+    console.log('current user:',store.getState());
+    this.handleRedirect();
+  }
+
+  handleRedirect = () => {
+    this.props.history.push('/my-books');
+  }
 
   render () {
     return (

@@ -16,6 +16,14 @@ export const userAdded = name => ({
     }
 })
 
+export const currentUserSet = user => ({
+    type: actions.SET_CURRENT_USER,
+    payload: {
+        id: user.id,
+        name: user.name
+    }
+})
+
 // export function bookAdded (title, start_date, end_date) {
 //   return {
 //     type: actions.BUG_ADDED,
